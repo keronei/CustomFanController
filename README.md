@@ -72,4 +72,5 @@ App to demo key concepts in Custom Views
    - Initializing variables and space allocation should be done outside `onDraw()`, let this function handle the hard work that is supposed to.
    
 5. Sample Screenshots
+   <img src="screenshots/off_state.jpg" width="220" height="470"/>&nbsp;&nbsp;&nbsp;&nbsp;<img src="screenshots/on_state.jpg" width="220" height="470"/>
    
