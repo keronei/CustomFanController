@@ -84,6 +84,10 @@ class DialView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
+        // Outside circle
+        paint.color = Color.MAGENTA
+        canvas.drawCircle((width / 2).toFloat(), (height / 2).toFloat(), radius + 5, paint)
+
         paint.color = when(fanSpeed) {
             FanSpeed.OFF -> Color.GRAY
             FanSpeed.LOW -> fanSpeedLowColor
@@ -91,15 +95,18 @@ class DialView @JvmOverloads constructor(
             FanSpeed.HIGH -> fanSpeedMaxColor
         }
 
+        // Fan Circle
         canvas.drawCircle((width / 2).toFloat(), (height / 2).toFloat(), radius, paint)
 
         val markerRadius = radius + RADIUS_OFFSET_INDICATOR
         pointPosition.computeXYForSpeed(fanSpeed, markerRadius)
         paint.color = Color.BLACK
+
+        // Indicator circle
         canvas.drawCircle(pointPosition.x, pointPosition.y, radius / 12, paint)
 
         val labelRadius = radius + RADIUS_OFFSET_LABEL
-        for (i in FanSpeed.values()){
+        for (i in FanSpeed.values()) {
             pointPosition.computeXYForSpeed(i, labelRadius)
             val label = resources.getString(i.label)
             canvas.drawText(label, pointPosition.x, pointPosition.y, paint)
